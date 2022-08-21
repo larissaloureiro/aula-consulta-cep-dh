@@ -1,0 +1,15 @@
+.maior td {
+  color: blue;
+}
+
+.menor td {
+  color: orangered;
+}
+
+.melhor td {
+  color: purple;
+}
+
+button {
+  margin-top: 20px;
+}

@@ -1,0 +1,61 @@
+<div class="container-fluid">
+
+  <div class="form-group">
+    <div class="row mt-5 mb-3">
+      <div class="col-4">
+        <label for="nome" class="col-form-label">Nome do Cliente: </label>
+        <input type="text" class="form-text form-control" id="nome" [(ngModel)]="cliente.nome" />
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">
+          <label for="idade" class="col-form-label">Idade: </label>
+          <input type="number" class="form-text form-control" id="idade" [(ngModel)]="cliente.idade" />
+        </div>
+        <div class="col-4">
+          <label for="salario" class="col-form-label">Salário: </label>
+          <input type="number" class="form-text form-control" id="salario" [(ngModel)]="cliente.salario" />
+        </div>
+        <div class="col-4">
+          <label for="cadastro" class="col-form-label">Data de Cadastro: </label>
+          <input type="date" class="form-text form-control" id="cadastro" [(ngModel)]="cliente.cadastro" />
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <app-cep></app-cep>
+  <button type="button" class="btn btn-success" (click)="addCliente()">Novo</button>
+
+  <hr />
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">NOME</th>
+        <th scope="col">IDADE</th>
+        <th scope="col">SALARIO</th>
+        <th scope="col">DATA DE CADASTRO</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr [id]="'lista -' + item.nome"
+        [ngClass]="{'maior':item.idade >= 18, 'menor':item.idade < 18, 'melhor':item.idade >= 60}"
+        *ngFor="let item of clientes">
+        <td>{{item.nome | uppercase}}</td>
+        <td>{{item.idade}}</td>
+        <td>{{item.salario | formatarMoeda}}</td>
+        <td>{{item.cadastro | date: 'dd/MM/yyyy'}}</td>
+
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- <ul>
+    <li
+      [id] ="'lista -' + item.nome"
+      [ngClass] = "{'maior':item.idade >= 18, 'menor':item.idade < 18, 'melhor':item.idade >= 60}"
+      *ngFor = "let item of clientes">
+        {{item.nome}} - {{item.idade}}
+    </li>
+  </ul> -->
+</div>
